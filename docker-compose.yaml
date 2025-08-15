@@ -10,7 +10,7 @@ services:
       - --model
       - Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8
       - --served-model-name
-      - Qwen3-Coder-30B-A3B
+      - qwen/qwen3-coder-30b
       - --enable-auto-tool-choice
       - --tool-call-parser
       - qwen3_coder

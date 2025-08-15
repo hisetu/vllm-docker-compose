@@ -1,0 +1,19 @@
+services:
+  vllm:
+    container_name: vllm
+    restart: no
+    image: vllm/vllm-openai:v0.10.0
+    ipc: host
+    volumes:
+      - ./models:/models
+    # command: ["--model", "/models/Qwen3-Coder-30B-A3B-Instruct-GGUF", "--served-model-name", "Qwen3-Coder-30B-A3B", "--gpu-memory-utilization", "0.90"]
+    command: ["--model-config", "model_config.json", "--gpu-memory-utilization", "0.90"]
+    ports:
+      -8073:8000
+    deploy:
+      resources:
+        devices:
+          - driver: nvidia
+            # count: all
+            device_ids: ["2"]
+            capabilities: [gpu]

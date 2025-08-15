@@ -1,0 +1,6 @@
+[
+  {
+    "model": "/models/Qwen3-Coder-30B-A3B-Instruct-GGUF",
+    "served_model_name": "Qwen3-Coder-30B-A3B"
+  }
+]

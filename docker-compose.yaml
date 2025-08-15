@@ -7,19 +7,20 @@ services:
     volumes:
       - ./models:/models
     command: 
-      - model
+      - --model
       - Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8
       - --served-model-name
       - Qwen3-Coder-30B-A3B
-      - enable-auto-tool-choice
-      - tool-call-parser
+      - --enable-auto-tool-choice
+      - --tool-call-parser
       - qwen3_coder
+      - --gpu-memory-utilization
+      - "0.98"
+      - --max-model-len
+      - "140000"
     ports:
       -8073:8000
-    deploy:
-      resources:
-        devices:
-          - driver: nvidia
-            count: all
-            # device_ids: ["2"]
-            capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=2
+      - HF_TOKEN=hf_xxxxxx
+    runtime: nvidia

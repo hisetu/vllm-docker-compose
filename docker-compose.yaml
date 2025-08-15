@@ -5,8 +5,8 @@ services:
     image: vllm/vllm-openai:v0.10.0
     ipc: host
     volumes:
-      - ./models:/models
-    command: 
+      - /home/liontechmdev/data/huggingface:/root/.cache/huggingface
+    command:
       - --model
       - Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8
       - --served-model-name
@@ -15,12 +15,13 @@ services:
       - --tool-call-parser
       - qwen3_coder
       - --gpu-memory-utilization
-      - "0.98"
+      - "0.95"
       - --max-model-len
-      - "140000"
+      - "100000"
     ports:
-      -8073:8000
+      - 8073:8000
     environment:
       - NVIDIA_VISIBLE_DEVICES=2
-      - HF_TOKEN=hf_xxxxxx
+      - HF_TOKEN=hf_xxx
+      # - CUDA_LAUNCH_BLOCKING=1
     runtime: nvidia

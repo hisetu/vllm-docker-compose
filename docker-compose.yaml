@@ -20,6 +20,6 @@ services:
       resources:
         devices:
           - driver: nvidia
-            # count: all
-            device_ids: ["2"]
+            count: all
+            # device_ids: ["2"]
             capabilities: [gpu]

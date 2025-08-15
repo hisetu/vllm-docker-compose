@@ -6,8 +6,14 @@ services:
     ipc: host
     volumes:
       - ./models:/models
-    # command: ["--model", "/models/Qwen3-Coder-30B-A3B-Instruct-GGUF", "--served-model-name", "Qwen3-Coder-30B-A3B", "--gpu-memory-utilization", "0.90"]
-    command: ["--model-config", "model_config.json", "--gpu-memory-utilization", "0.90"]
+    command: 
+      - model
+      - Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8
+      - --served-model-name
+      - Qwen3-Coder-30B-A3B
+      - enable-auto-tool-choice
+      - tool-call-parser
+      - qwen3_coder
     ports:
       -8073:8000
     deploy:

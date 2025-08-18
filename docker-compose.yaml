@@ -17,7 +17,8 @@ services:
       - --gpu-memory-utilization
       - "0.95"
       - --max-model-len
-      - "100000"
+      - "131072"
+      - --enable-expert-parallel
     ports:
       - 8073:8000
     environment:
